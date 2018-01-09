@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>green2</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!--bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<!--mapbox-->
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
+	<!--google font-->
+	<link href="https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css" rel="stylesheet">
+	<!--connect css file-->
+	<link rel="stylesheet" href="css/green.css">
+	<link rel="stylesheet" href="css/animate.css">
+
+	<style>
+		/*
+		body,
+		.container-fluid {
+			margin: 0;
+			padding: 0;
+		}
+		
+*/
+
+		.video {
+			max-width: 100%;
+			min-height: 100%;
+			z-index: -1;
+			position: absolute;
+		}
+
+		.fixed {
+			position: fixed;
+			top: 0;
+		}
+
+		.start {
+			position: absolute;
+			margin-top: 70px;
+			margin-left: 600px;
+		}
+
+		.col-md-4 {
+			margin-top: 75px;
+			margin-left: 500px;
+			line-height: 100%;
+			text-align: center;
+		}
+
+		.original {
+			position: absolute;
+			margin-top: -50px;
+			margin-left: -230px;
+			z-index: 1;
+
+		}
+
+		.ca {
+			position: absolute;
+			margin-top: -100px;
+			margin-left: 270px;
+			z-index: 2;
+		}
+
+		/*
+		.level0 {
+			position: absolute;
+			margin-top: -80px;
+			margin-left: 300px;
+			z-index: 0;
+		}
+*/
+
+		.remain {
+			position: absolute;
+			margin-top: -50px;
+			margin-left: -230px;
+			z-index: 3;
+		}
+
+		.dead {
+			position: absolute;
+			margin-top: -50px;
+			margin-left: 250px;
+			z-index: 3;
+		}
+
+		.level {
+			position: absolute;
+			margin-top: -80px;
+			margin-left: 300px;
+			z-index: 2;
+		}
+
+		.year {
+			position: absolute;
+			margin-left: 215px;
+			text-align: center;
+
+		}
+
+		.bar {
+			position: absolute;
+			margin-top: 50px;
+			margin-left: 300px;
+		}
+
+		.middletext {
+			position: absolute;
+			margin-top: 60px;
+			margin-left: 270px;
+			text-align: center;
+		}
+
+		.img {
+			position: absolute;
+
+		}
+
+		.fishv {
+			position: absolute;
+			margin-top: 200px;
+			margin-left: 50px;
+			color: white;
+		}
+
+		.crabv {
+			position: absolute;
+			margin-top: 200px;
+			margin-left: 50px;
+			color: white;
+		}
+
+		.worldt {
+			position: absolute;
+			margin-top: 30px;
+			margin-left: 600px;
+		}
+
+		.col-sm-4 {
+			margin-left: 90px;
+		}
+
+		.col-sm-6 {
+			margin-left: 800px;
+		}
+
+		.taiwan {
+			position: absolute;
+			margin-top: 30px;
+			margin-left: 530px;
+		}
+
+		.lm{
+			position: absolute;
+			margin-left:80px;
+			margin-top: 60px;
+		}
+		.p1{
+			position: absolute;
+			margin-left:80px;
+			margin-top: 60px;
+		}
+		.p2{
+			position: absolute;
+			margin-left:80px;
+			margin-top: 60px;
+		}
+		.ps{
+			position: absolute;
+			margin-left:550px;
+			margin-top: 400px;
+		}
+		.line{
+			position: absolute;
+			margin-left:80px;
+			margin-top: 60px;
+		}
+		.other{
+			position: absolute;
+			margin-left:80px;
+			margin-top: 60px;
+		}
+		.turn {
+			margin-left: 20px;
+			margin-right: 61px;
+
+		}
+
+		.crisist {
+			position: absolute;
+			margin-top: 2px;
+			margin-left: 400px;
+		}
+
+		.inspectt {
+			position: absolute;
+			margin-top: 30px;
+			margin-left: 400px;
+			text-align: center;
+		}
+
+
+		/*timeline style*/
+
+		.timeline {
+			position: relative;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		/* The actual timeline (the vertical ruler) */
+
+		.timeline::after {
+			content: '';
+			position: absolute;
+			width: 5px;
+			background-color: white;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			margin-left: -3px;
+			z-index: 0;
+		}
+
+		/* Container around content */
+
+		.container {
+			padding: 10px 40px;
+			position: relative;
+			background-color: inherit;
+			width: 50%;
+
+		}
+
+		/* The circles on the timeline */
+
+		.container::after {
+			content: '';
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			right: -17px;
+			background-color: white;
+			/*			border: 4px solid #FF9F55;*/
+			top: 15px;
+			border-radius: 50%;
+			z-index: 2;
+		}
+
+		/* Place the container to the left */
+
+		.left {
+			left: -25.3%;
+		}
+
+		/* Place the container to the right */
+
+		.right {
+			left: 25.3%;
+		}
+
+		/* Add arrows to the left container (pointing right) */
+
+		.left::before {
+			content: " ";
+			height: 0;
+			position: absolute;
+			top: 22px;
+			width: 0;
+			z-index: 1;
+			right: 30px;
+			border: medium solid white;
+			border-width: 10px 0 10px 10px;
+			border-color: transparent transparent transparent white;
+		}
+
+		/* Add arrows to the right container (pointing left) */
+
+		.right::before {
+			content: " ";
+			height: 0;
+			position: absolute;
+			top: 22px;
+			width: 0;
+			z-index: 1;
+			left: 30px;
+			border: medium solid white;
+			border-width: 10px 10px 10px 0;
+			border-color: transparent white transparent transparent;
+		}
+
+		/* Fix the circle for containers on the right side */
+
+		.right::after {
+			left: -16px;
+		}
+
+		/* The actual content */
+
+		.content {
+			padding: 20px 30px;
+			background-color: white;
+			position: relative;
+			border-radius: 6px;
+		}
+
+		/* Media queries - Responsive timeline on screens less than 600px wide */
+
+		/*
+		@media all and (max-width: 600px) {
+			 Place the timelime to the left 
+			.timeline::after {
+				left: 31px;
+			}
+*/
+
+		/* Full-width containers */
+
+		/*
+			.container {
+				width: 100%;
+				padding-left: 70px;
+				padding-right: 25px;
+			}
+*/
+
+		/* Make sure that all arrows are pointing leftwards */
+
+		/*
+			.container::before {
+				left: 60px;
+				border: medium solid white;
+				border-width: 10px 10px 10px 0;
+				border-color: transparent white transparent transparent;
+			}
+*/
+
+		/* Make sure all circles are at the same spot */
+
+		/*
+			.left::after,
+			.right::after {
+				left: 15px;
+			}
+*/
+
+		/* Make all right containers behave like the left ones */
+
+		/*
+			.right {
+				left: 0%;
+			}
+			.body {
+				margin: 0;
+				padding: 0;
+			}
+*/
+
+		/*
+			.map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+			}
+*/
+		
+		.pass{
+			position: absolute;
+			margin-left: 470px;
+			margin-top: 50px;
+		}
+		
+		.credit{
+			position: absolute;
+			margin-top: 15px;
+			margin-left: 600px;
+			text-align: center;
+}
+		
+		.talk1{
+			position: absolute;
+			margin-left: 250px;
+			margin-top: 100px;
+		}
+		.talk2{
+			position: absolute;
+			margin-left: 250px;
+			margin-top: 570px;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<!--	introduction-->
+	<video id="video1" src="assets/head.mov" class="video"></video>
+	<div id="cover" class="container-fluid" style="height:800px;"></div>
+	<div id="intro1" class="container-fluid" style="height: 200px; background-color: rgba(0, 0, 0, 0.8); color:white">
+		<div class="start">
+			<h1>藻礁是什麼？</h1>
+		</div>
+	</div>
+	<div id="explain1" class="container-fluid" style="height: 700px;background-color:whitesmoke">
+		<div class="row">
+			<div class="col-md-4">
+				<h2>石灰藻經鈣化作用<br/>在原地沈積碳酸鈣</h2>
+				<div class="original">
+					<img src="assets/sw4.png">
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="ca slideanimate">
+					<img src="assets/ca.png">
+				</div>
+				<!--
+				<div class="level0 slideanimate1">
+					<img src="assets/level1.png">
+				</div>
+-->
+			</div>
+		</div>
+
+	</div>
+	<div id="explain2" class="container-fluid" style="height: 800px;background-color:whitesmoke">
+		<div class="row">
+			<div class="col-md-4">
+				<h2>石灰藻死後<br/>留下的底質層層累積<br/>成為我們現在所見的藻礁</h2>
+				<div class="remain">
+					<img src="assets/remain.png">
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="level slideanimate2">
+					<img src="assets/level1.png">
+				</div>
+
+				<div class="dead slideanimate3">
+					<img src="assets/dead.png">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="explain2" class="container-fluid" style="height: 700px;background-color:whitesmoke">
+		<div class="year">
+			<h2>藻礁20年累積約1公分，桃園的藻礁群厚達3至6公尺，累積至少<span>7500</span>年。</h2>
+		</div>
+		<div class="bar slideanimate4">
+			<img src="assets/bar.png">
+		</div>
+<!--
+		<div class="bar slideanimate4">
+			<ul class="bar-graph">
+				
+				
+				<li class="bar-graph-axis">
+					<div class="bar-graph-label">7500年</div>
+					<div class="bar-graph-label">20年</div>
+
+				</li>
+
+
+				<li class="bar alert" style="height: 0%;">
+					<div class="percent2">0.01<span>公尺</span></div>
+					<div class="description">藻礁</div>
+				</li>
+				<li class="bar primary" style="height: 100%;">
+					<div class="percent">6<span>公尺</span></div>
+					<div class="description">桃園大潭藻礁</div>
+				</li>
+
+
+			</ul>
+		</div>
+-->
+	</div>
+
+
+	<div id="middle" class="container-fluid" style="height:200px;background-color:antiquewhite;">
+		<div class="middletext">
+			<h2>藻礁有許多細小孔隙，提供幼魚、幼蝦及螃蟹棲息的空間；<br/>此外，因為魚蝦豐富，食物鏈高端的海鰻、石斑等也會在此覓食。
+			</h2>
+		</div>
+	</div>
+
+	<video id="video2" src="assets/1.mov" class="video"></video>
+	<div class="container-fluid" style="min-height: 800px; color:white;">
+	</div>
+	<div id="intro2" class="container-fluid" style="min-height: 800px; background-color: rgba(0, 0, 0, 0.8); color:white">
+		<div class="fishv">
+			<h2>根據東海大學生命科學系特聘教授林惠真的初步調查，<br/>大潭藻礁周圍有約1200隻海鰻。<br/>以此推估，當地光是屬大型蟹的兇猛酋婦蟹就有58萬隻之多，<br/>可推測當地物種的豐富度和數量十分龐大。</h2>
+		</div>
+	</div>
+	<video id="video3" src="assets/2.mov" class="video"></video>
+	<div class="container-fluid" style="min-height: 800px; color:white;">
+	</div>
+	<div id="intro3" class="container-fluid" style="min-height: 800px; background-color: rgba(0, 0, 0, 0.8); color:beige">
+		<div class="crabv">
+			<h2>國內陸蟹權威劉烘昌博士也認為，<br/>大潭藻礁潮間帶的蟹類豐富度，<br/>遠超出恆春的珊瑚礁潮間帶，是國寶級的生態。<br/>他亦指出，以自己走訪全球超過5000公里海岸的經驗，<br/>藻礁海岸在全世界也是非常稀有的地形。</h2>
+		</div>
+	</div>
+	<!--location-->
+	<div id="worldmap" class="container-fluid" style="height: 100px; background-color:whitesmoke">
+		<div class="worldt">
+			<h2>現生的藻礁可見於</h2>
+		</div>
+	</div>
+
+	<div class="parallax1"></div>
+	<div class="parallax2">
+		<div class="container-fluid">
+			<div class="place1">
+				<div class="col-sm-4">
+					<h2>加勒比海、印度洋-太平洋海域的小島向海面，海浪強大帶。</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="parallax3">
+		<div class="container-fluid">
+			<div class="place2">
+				<div class="col-sm-6">
+					<h2>也有分布於加拿大東部、<br/>英國、挪威之間的寒冷淺海域。</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="parallax4">
+		<div class="container-fluid">
+			<div class="place3">
+				<div class="col-sm-4">
+					<h2>或是出現在地中海、澳洲西部極度高鹽分的潟湖內，多為極端地帶，而且各具特色。</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="localmap" class="container-fluid" style="height:800px; background-color:whitesmoke">
+		<div class="taiwan">
+			<h2>桃園藻礁群綿延長達<span>27</span>公里</h2>
+			<h4>範圍從竹圍漁港沿海直至永安漁港</h4>
+		</div>
+		<div class="lm">
+			<img src="assets/map2.png">
+		</div>
+		<div class="p1">
+			<img src="assets/p1.png">
+		</div>
+		<div class="p2">
+			<img src="assets/p2.png">
+		</div>
+		<div class="line">
+			<img src="assets/line.png">
+		</div>
+		<div class="other">
+			<img src="assets/other.png">
+		</div>
+		<div class="ps">
+			<h4>目前許厝港濕地南部的區塊<br/>已被劃設為「觀新藻礁野生動物保護區」</h4>
+		</div>
+	</div>
+
+
+
+
+	<!--crisis-->
+	<div id="history" class="container-fluid" style="height:1650px; background-color:gray">
+		<div class="turn">
+			<br/><br/>
+			<h1>然而，這片藻礁將面臨消失的危機</h1><br/>
+			<h4>1997年，行政院核准台電在大潭興建天然氣發電廠，預計將招標供氣商，引來東帝士集團注意，成立東鼎公司，以爭取大潭電廠的供氣合約。台電明訂，供氣商需自有位於臺灣本島北部的天然氣接收站，東鼎公司為取得大潭電廠的供氣合約，申請並成功取得觀塘工業區及工業港開發權。其中，觀塘工業港正是為建造天然氣接收站而設計的。<br><br> 但在2003年，中油低標取得供氣合約，台電擴大解釋北部接收站定義，接受從中油的台中接收站供氣。東鼎公司也因此閒置觀塘工業港。 2016年，中油併購東鼎公司，取得觀塘工業港開發權，預計興建第三天然氣接收站。<br><br><br>
+			</h4>
+		</div>
+
+		<div class="timeline">
+			<div class="container left flipinx1">
+				<div class="content">
+					<h4>1997</h4>
+					<h3>行政院核准台電興建大潭電廠</h3>
+				</div>
+			</div>
+			<div class="container right flipinx1">
+				<div class="content">
+					<h4>1999-2000</h4>
+					<h3>觀塘工業區、工業港分別通過環評，經濟部隨即核可東鼎公司的開發申請</h3>
+				</div>
+			</div>
+			<div class="container left flipinx2">
+				<div class="content">
+					<h4>2003</h4>
+					<h3>中油取得大潭電廠天然氣供輸權，東鼎公司因此停擺大潭接收站工程</h3>
+				</div>
+			</div>
+			<div class="container right flipinx2">
+				<div class="content">
+					<h4>2009.01.14</h4>
+					<h3>大潭電廠六部機組全數商轉，由中油的台中接收站供氣</h3>
+				</div>
+			</div>
+			<div class="container left flipinx1">
+				<div class="content">
+					<h4>2016.11.18</h4>
+					<h3>中油併購東鼎公司，取得觀塘工業港開發權，開始規劃建置大潭接收站，並申請環差分析</h3>
+				</div>
+			</div>
+			<div class="container right flipinx1">
+				<div class="content">
+					<h4>2017.06.05</h4>
+					<h3>環保署召開觀塘工業港環差分析專案小組初審會議，中油未能通過環差，環評會要求再補件</h3>
+				</div>
+			</div>
+			<div class="container left flipinx1">
+				<div class="content">
+					<h4>2017.10.26</h4>
+					<h3>觀塘工業港環差分析第二次初審會議，環評會要求中油再回應補正報告，至2017年底仍未完成</h3>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!--future-->
+
+	<div id="inspect" class="container-fluid" style="height: 180px; background-color:dimgray">
+		<div class="inspectt">
+			<h2>環差分析的重點包括：<br/></h2>
+			<h3>是否會影響一級保育類動物「柴山多杯孔珊瑚」？<br/> 漂沙對藻礁生態會產生多大影響、如何補償？
+			</h3>
+		</div>
+	</div>
+
+
+	<div class="parallax5"></div>
+	<div class="parallax6" style="color: white;">
+		<div class="container-fluid">
+			<div class="fail">
+				<div class="col-sm-4">
+					<br/><br/>
+					<h2>未來環差若<span>沒有通過</span>，<br/>無法興建天然氣接收站，<br/>將影響供電。</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="howto" class="container-fluid" style="height: 1200px; background-color:dimgray">
+		<div class="pass">
+			<h2>而環差如果<span>通過</span>，又將是一項考驗</h2>
+		</div>
+		<div class="talk1 slideinup1">	
+			<img src="assets/t1.png">
+		</div>
+		<div class="talk2 slideinup2">
+			<img src="assets/t2.png">
+		</div>
+	</div>
+
+	
+	
+	<div id="footer" class="container-fluid" style="height:80px;background-color: gray;">
+		<div class="credit">採訪、資料整理／康陳剛<br/>
+		製作、設計／麻愷晅、康陳剛</div>
+	</div>
+	
+	
+	<!--jquery-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<!--popper-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<!--bootstrap-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!--mapbox-->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+	<script src="./js/mapbox.js"></script>
+
+	<script>
+		$(document).ready(function() {
+
+			var video1_pos = $('#video1').position().top;
+			var video2_pos = $('#video2').position().top;
+			var video3_pos = $('#video3').position().top;
+			var intro1_pos = $('#intro1').position().top;
+			var intro2_pos = $('#intro2').position().top;
+			var intro3_pos = $('#intro3').position().top;
+
+
+			//Reserve the original height
+
+			$(window).scroll(function() {
+				var scroll = $(window).scrollTop();
+				var winh = $(window).height();
+
+				if (scroll >= video1_pos) {
+					$('#video1').addClass('fixed');
+				} else {
+					$('#video1').removeClass('fixed');
+				}
+				if (scroll >= video2_pos) {
+					$('#video2').addClass('fixed');
+				} else {
+					$('#video2').removeClass('fixed');
+				}
+				if (scroll >= video3_pos) {
+					$('#video3').addClass('fixed');
+				} else {
+					$('#video3').removeClass('fixed');
+				}
+
+				if (scroll > video1_pos - winh / 2 && scroll < intro1_pos) {
+					$('#video1')[0].play();
+				} else {
+					$('#video1')[0].pause();
+				}
+
+				if (scroll > video2_pos - winh / 2 && scroll < intro2_pos) {
+					$('#video2')[0].play();
+				} else {
+					$('#video2')[0].pause();
+				}
+				if (scroll > video3_pos - winh / 2 && scroll < intro3_pos) {
+					$('#video3')[0].play();
+				} else {
+					$('#video3')[0].pause();
+				}
+			});
+
+
+			$(window).scroll(function() {
+				$(".slideanimate").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 0.7) {
+						$(this).addClass("animated fadeInLeft slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated fadeInLeft slide");
+					}
+				});
+			});
+
+			$(window).scroll(function() {
+				$(".slideanimate2").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 0.9) {
+						$(this).addClass("animated fadeIn slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated fadeIn slide");
+					}
+				});
+			});
+
+
+			$(window).scroll(function() {
+				$(".slideanimate3").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 0.7) {
+						$(this).addClass("animated fadeOut slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated fadeOut slide");
+					}
+				});
+			});
+
+			$(window).scroll(function() {
+				$(".slideanimate4").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 0.9) {
+						$(this).addClass("animated fadeInUp slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated fadeUp slide");
+					}
+				});
+			});
+
+			$(window).scroll(function() {
+				$(".flipinx1").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 1.2) {
+						$(this).addClass("animated flipInX slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated flipInX slide");
+					}
+				});
+			});
+			$(window).scroll(function() {
+				$(".flipinx2").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 1.4) {
+						$(this).addClass("animated flipInX slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated flipInX slide");
+					}
+				});
+			});
+
+			$(window).scroll(function() {
+				$(".slideinup1").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 0.9) {
+						$(this).addClass("animated slideInUp slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated slideInUp slide");
+					}
+				});
+			});
+			$(window).scroll(function() {
+				$(".slideinup2").each(function() {
+					var winTop = $(window).scrollTop();
+					var winheight = $(window).height();
+					var pos = $(this).offset().top;
+					if (pos < winTop + winheight * 0.95) {
+						$(this).addClass("animated slideInUp slide");
+					}
+					if (winTop == 0) {
+						$(this).removeClass("animated slideInUp slide");
+					}
+				});
+			});
+
+		});
+	</script>
+</body>
+
+</html>

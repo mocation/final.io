@@ -1,0 +1,242 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.year span {
+	font-size: 3rem;
+	color: brown;
+}
+
+/*
+.bar-graph {
+	padding-top: 0px;
+	width: 100%;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: flex-end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+	height: 500px;
+	margin: 0;
+}
+
+.bar-graph li {
+	display: block;
+	padding: 1.8rem 0;
+	position: relative;
+	text-align: center;
+	vertical-align: top;
+	border-radius: 4px 4px 0 0;
+	max-width: 20%;
+	height: 100%;
+	margin: 0 1.8% 0 0;
+	-webkit-flex: 1 1 15%;
+	-ms-flex: 1 1 15%;
+	flex: 1 1 15%;
+}
+
+.bar-graph .bar-graph-axis {
+	-webkit-flex: 1 1 8%;
+	-ms-flex: 1 1 8%;
+	flex: 1 1 8%;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+
+@media print,
+screen and (min-width: 40em) {
+	.bar-graph .bar-graph-label:before,
+	.bar-graph .bar-graph-label:after {
+		content: "";
+		position: absolute;
+		border-bottom: 1px dashed #8a8a8a;
+		top: 0;
+		left: 0;
+		height: 50%;
+		width: 20%;
+	}
+}
+
+@media print,
+screen and (min-width: 40em) and (min-width: 64em) {
+	.bar-graph .bar-graph-label:before,
+	.bar-graph .bar-graph-label:after {
+		width: 30%;
+	}
+}
+
+@media print,
+screen and (min-width: 40em) {
+	.bar-graph .bar-graph-label:after {
+		left: auto;
+		right: 0;
+	}
+}
+
+.bar-graph .percent {
+
+	top: 2px;
+	opacity: 0.8;
+	width: 100%;
+	font-size: 1.8rem;
+	position: absolute;
+}
+
+.bar-graph .percent2 {
+
+	bottom: 50px;
+	opacity: 0.8;
+	width: 100%;
+	font-size: 1.8rem;
+	position: absolute;
+}
+
+@media print,
+screen and (min-width: 40em) {
+	.bar-graph .percent {
+		font-size: 3.875rem;
+	}
+}
+
+.bar-graph .percent span {
+	font-size: 1.5rem;
+}
+
+.bar-graph .percent2 span {
+	font-size: 1.5rem;
+}
+
+.bar-graph .description {
+	font-weight: 800;
+	opacity: 0.7;
+	text-transform: uppercase;
+	width: 100%;
+	font-size: 14px;
+	bottom: 20px;
+	position: absolute;
+	font-size: 1rem;
+	overflow: hidden;
+}
+
+.bar-graph .bar.primary {
+	border: 1px solid #968069;
+	background: linear-gradient(#968069, #6D5C4F 70%);
+}
+
+
+.bar-graph .bar.alert {
+	border: 1px solid #935F5A;
+	background: linear-gradient(#935F5A, #66423E 70%);
+}
+*/
+
+/*location*/
+
+.parallax1 {
+	background-image: url("../assets/mapn.png");
+/*	max-width: 100%;*/
+	height: 500px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.parallax2 {
+	background-image: url("../assets/mapn2.png");
+/*	max-width: 100%;*/
+	height: 500px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+.parallax3 {
+	background-image: url("../assets/mapn3.png");
+/*	max-width: 100%;*/
+	height: 700px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+.parallax4 {
+	background-image: url("../assets/mapn4.png");
+/*	max-width: 100%;*/
+	height: 800px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+.taiwan span {
+	font-size: 3rem;
+	color: brown;
+}
+
+
+
+/*timeline*/
+
+/*future*/
+
+
+.parallax5 {
+	background-image: url("../assets/night1.png");
+/*	max-width: 100%;*/
+	height: 600px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.parallax6 {
+	background-image: url("../assets/night2.png");
+/*	max-width: 100%;*/
+	height: 700px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+.fail span{
+	color: brown;
+	font-size: 2.6rem;
+}
+
+.pass span{
+	color: brown;
+	font-size: 2.6rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
